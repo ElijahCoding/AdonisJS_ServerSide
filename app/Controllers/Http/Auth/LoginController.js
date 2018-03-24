@@ -24,7 +24,9 @@ class LoginController {
       return response.redirect('back')
     }
 
-    return 'works'
+    await auth.attempt(email, password)
+
+    return response.route('home')
   }
 }
 
