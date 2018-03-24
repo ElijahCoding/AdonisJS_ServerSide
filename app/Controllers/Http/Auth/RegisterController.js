@@ -1,6 +1,7 @@
 'use strict'
 
 const { validateAll } = use('Validator')
+const User = use('App/Models/User')
 
 class RegisterController {
   index ({ view }) {
@@ -8,11 +9,12 @@ class RegisterController {
   }
 
   async register ({ request, response, session }) {
+
     const { email, username, password } = request.all()
 
     const rules = {
       email: 'required|email|unique:users,email',
-      username: 'reuquired|unique:users,username',
+      username: 'required|unique:users,username',
       password: 'required'
     }
 
@@ -25,7 +27,17 @@ class RegisterController {
       return response.redirect('back')
     }
 
-    return 'works';
+    const user = new User()
+
+    user.fill({
+      email,
+      username,
+      password
+    })
+
+    await user.save()
+
+    return response.route('home');
   }
 }
 
