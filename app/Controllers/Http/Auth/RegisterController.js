@@ -7,7 +7,7 @@ class RegisterController {
     return view.render('auth.register')
   }
 
-  async register ({ request }) {
+  async register ({ request, response, session }) {
     const { email, username, password } = request.all()
 
     const rules = {
@@ -18,7 +18,14 @@ class RegisterController {
 
     const validation = await validateAll(request.all(), rules)
 
-    return validation.fails()
+    if(validation.fails()) {
+      session.withErrors(validation.messages())
+             .flashAll()
+
+      return response.redirect('back')
+    }
+
+    return 'works';
   }
 }
 
