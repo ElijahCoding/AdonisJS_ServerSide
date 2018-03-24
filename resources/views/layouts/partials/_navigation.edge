@@ -8,6 +8,7 @@
       </div>
 
       <div class="navbar-end">
+        @loggedIn
         <div class="navbar-item">
           <form action="" method="POST">
             <button class="button is-white" type="submit" href="#">
@@ -15,6 +16,7 @@
             </button>
           </form>
         </div>
+        @else
         <div class="navbar-item">
           <div class="field is-grouped">
             <p class="control">
@@ -31,6 +33,7 @@
             </p>
           </div>
         </div>
+        @endloggedIn
       </div>
     </div>
   </div>
