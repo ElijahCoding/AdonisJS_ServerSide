@@ -16,12 +16,16 @@ Route.post('/posts', 'PostController.store')
 
 Route.get('/auth/register', 'Auth/RegisterController.index')
      .as('auth.register')
+     .middleware(['guest'])
 
 Route.post('/auth/register', 'Auth/RegisterController.register')
      .as('auth.register')
+     .middleware(['guest'])
 
 Route.get('/auth/login', 'Auth/LoginController.index')
      .as('auth.login')
+     .middleware(['guest'])
 
 Route.post('/auth/login', 'Auth/LoginController.login')
      .as('auth.login')
+     .middleware(['guest'])

@@ -36,7 +36,8 @@ const globalMiddleware = [
 |
 */
 const namedMiddleware = {
-  auth: 'App/Middleware/Authenticated'
+  auth: 'App/Middleware/Authenticated',
+  guest: 'App/Middleware/Guest'
 }
 
 /*
