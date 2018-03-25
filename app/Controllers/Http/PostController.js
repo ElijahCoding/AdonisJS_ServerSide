@@ -22,7 +22,7 @@ class PostController {
       session.withErrors(validation.messages())
              .flashAll()
 
-    return response.redicrect('back')
+    return response.redirect('back')
     }
   }
 }
