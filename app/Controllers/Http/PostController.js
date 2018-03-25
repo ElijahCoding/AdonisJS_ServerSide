@@ -1,13 +1,14 @@
 'use strict'
 
 const { validateAll } = use('Validator')
+const Post = use('App/Models/Post')
 
 class PostController {
   create ({ view }) {
     return view.render('posts.create')
   }
 
-  async store ({ request, response, session }) {
+  async store ({ request, response, session, auth }) {
     const { title, tag, body } = request.all()
 
     const rules = {
@@ -24,6 +25,19 @@ class PostController {
 
     return response.redirect('back')
     }
+
+    const post = new Post()
+
+    post.fill({
+      title,
+      body,
+      tag_id: tag,
+      user_id: auth.user.id
+    })
+
+    await post.save()
+
+    return response.route('home')
   }
 }
 
