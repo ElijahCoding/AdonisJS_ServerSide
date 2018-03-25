@@ -1,9 +1,21 @@
 'use strict'
 
+const { isEmpty } = require('lodash')
+const slugify = require('slugify')
+
 class Slugify {
   register (Model) {
     Model.addHook('afterCreate', (modelInstance) => {
-      console.log(modelInstance.id)
+      if (isEmpty(modelInstance.title)) {
+        return
+      }
+
+      let slugTitle = slugify(modelInstance.title, {
+        lower: true
+      })
+
+      modelInstance.slug = `${slugTitle}-${modelInstance.id}`
+      modelInstance.save()
     })
   }
 }
