@@ -8,9 +8,11 @@ Route.on('/').render('welcome').as('home')
 
 Route.get('/posts/create', 'PostController.create')
      .as('posts.create')
+     .middleware(['auth'])
 
 Route.post('/posts', 'PostController.store')
      .as('posts.store')
+     .middleware(['auth'])
 
 Route.get('/auth/register', 'Auth/RegisterController.index')
      .as('auth.register')
