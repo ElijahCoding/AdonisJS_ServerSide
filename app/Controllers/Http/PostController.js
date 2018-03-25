@@ -13,7 +13,7 @@ class PostController {
 
     const rules = {
       title: 'required',
-      tag: 'required',
+      tag: 'required|exists:tags,id',
       body: 'required'
     }
 
