@@ -6,6 +6,8 @@ class HomeController {
 
   async index ({ view, request, response }) {
     let posts = await Post.query()
+        .with('tag')
+        .with('user')
         .fetch()
 
     return view.render('index', {

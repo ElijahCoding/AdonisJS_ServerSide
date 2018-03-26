@@ -5,7 +5,7 @@
     <div class="section">
       @if(posts.toJSON().length)
           @each(post in posts.toJSON())
-            {{ post.title }}
+            @include('forum.partials._post')
           @endeach
         @else
           <p>
