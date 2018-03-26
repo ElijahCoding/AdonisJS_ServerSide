@@ -8,7 +8,7 @@
   <div class="media-content">
     <div class="content">
       <h4>
-        <a href="">
+        <a href="{{ route('posts.show', { slug: post.slug }) }}">
           {{ post.title }}
         </a>
         <span class="tag">{{ post.tag.name }}</span>

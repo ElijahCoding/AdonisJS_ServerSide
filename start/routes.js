@@ -5,6 +5,8 @@ const Route = use('Route')
 
 Route.get('/', 'HomeController.index').as('home')
 
+Route.get('/posts/:slug', 'PostController.show')
+     .as('posts.show')
 
 Route.get('/posts/create', 'PostController.create')
      .as('posts.create')
