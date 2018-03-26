@@ -10,6 +10,8 @@ class HomeController {
         .with('user')
         .fetch()
 
+
+    console.log(posts.toJSON())
     return view.render('index', {
       posts
     })

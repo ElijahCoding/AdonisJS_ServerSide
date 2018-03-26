@@ -2,6 +2,8 @@
 
 const Model = use('Model')
 
+const md5 = require('md5')
+
 class User extends Model {
   static boot () {
     super.boot()
@@ -16,6 +18,12 @@ class User extends Model {
     this.addHook('beforeCreate', 'User.hashPassword')
   }
 
+  static get computed () {
+    return [
+      'avatar'
+    ]
+  }
+
   /**
    * A relationship on tokens is required for auth to
    * work. Since features like `refreshTokens` or
@@ -28,6 +36,10 @@ class User extends Model {
    */
   tokens () {
     return this.hasMany('App/Models/Token')
+  }
+
+  getAvatar ({ email }) {
+    return `https://www.gravatar.com/avatar/${md5(email)}?s=100&d=mm`
   }
 }
 
