@@ -3,7 +3,7 @@
 
 const Route = use('Route')
 
-Route.on('/').render('welcome').as('home')
+Route.get('/', 'HomeController.index').as('home')
 
 
 Route.get('/posts/create', 'PostController.create')

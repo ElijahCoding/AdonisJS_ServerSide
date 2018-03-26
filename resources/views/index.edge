@@ -1,0 +1,18 @@
+@layout('layouts.default')
+
+@section('content')
+  <div class="box">
+    <div class="section">
+      @if(posts.toJSON().length)
+          @each(post in posts.toJSON())
+            {{ post.title }}
+          @endeach
+        @else
+          <p>
+            There are no posts
+          </p>
+        @endeach
+      @endif
+    </div>
+  </div>
+@endsection
