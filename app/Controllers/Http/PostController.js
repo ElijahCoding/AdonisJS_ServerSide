@@ -10,6 +10,7 @@ class PostController {
         .with('user')
         .with('tag')
         .with('replies')
+        .with('replies.user')
         .where('slug', '=', params.slug)
         .firstOrFail()
 
