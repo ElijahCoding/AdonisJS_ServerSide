@@ -23,6 +23,18 @@ class PostReplyController {
 
       return response.redirect('back')
     }
+
+    const reply = new Post()
+
+    reply.fill({
+      body,
+      parent_id: post.id,
+      user_id: auth.user.id
+    })
+
+    await reply.save()
+
+    return response.redirect('back')
   }
 }
 
