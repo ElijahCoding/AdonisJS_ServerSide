@@ -17,7 +17,7 @@ class Post extends Model {
   }
 
   replies () {
-    return this.hasMany('App/Models/Post', 'id', 'parent_id')
+    return this.hasMany('App/Models/Post', 'id', 'parent_id').orderBy('created_at', 'asc')
   }
 }
 
