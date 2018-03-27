@@ -8,6 +8,7 @@ class HomeController {
     let posts = await Post.query()
         .with('tag')
         .with('user')
+        .whereNull('parent_id')
         .fetch()
 
 
