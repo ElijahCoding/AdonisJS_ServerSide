@@ -15,7 +15,11 @@
       </h4>
 
       <p>
-        <strong>{{ post.user.username }}</strong> posted {{ post.created_at }}
+        @if(post.replies.length)
+          <strong>{{ post.lastReply.user.username }}</strong> replied {{ post.lastReply.created_at }}
+        @else
+          <strong>{{ post.user.username }}</strong> posted {{ post.created_at }}
+        @endif
       </p>
     </div>
   </div>
