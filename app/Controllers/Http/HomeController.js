@@ -6,13 +6,7 @@ class HomeController {
 
   async index ({ view, request, response }) {
     let posts = await Post.query()
-        .with('tag')
-        .with('user')
-        .with('replies')
-        .with('lastReply')
-        .with('lastReply.user')
-        .whereNull('parent_id')
-        .orderBy('last_reply_at', 'desc')
+        .forIndex()
         .fetch()
 
 
