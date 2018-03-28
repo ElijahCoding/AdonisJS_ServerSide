@@ -31,6 +31,7 @@
     "gulp": "^3.9.1",
     "md5": "^2.2.1",
     "pg": "^7.4.1",
+    "pluralize": "^7.0.0",
     "slugify": "^1.2.9"
   },
   "devDependencies": {

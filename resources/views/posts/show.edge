@@ -38,6 +38,12 @@
             </article>
           @endeach
         </div>
+
+        <div class="media-right">
+          <span class="has-text-grey-light">
+            {{ post.replies.length }} {{ pluralize('reply', post.replies.length) }}
+          </span>
+        </div>
       </article>
 
       <div class="section">
