@@ -5,11 +5,11 @@
         <a class="navbar-item" href="{{ route('home') }}">
           Recent
         </a>
-        <a class="navbar-item" href="#">
+        <a class="navbar-item" href="{{ route('posts.unanswered') }}">
           Unanswered
         </a>
         @loggedIn
-          <a class="navbar-item" href="#">
+          <a class="navbar-item" href="{{ route('posts.own') }}">
             Your posts
           </a>
         @endloggedIn

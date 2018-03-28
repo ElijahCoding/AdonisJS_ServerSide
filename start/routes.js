@@ -21,6 +21,10 @@ Route.post('/posts', 'PostController.store')
 Route.get('/unanswered', 'UnansweredPostController.index')
      .as('posts.unanswered')
 
+Route.get('/own', 'OwnPostController.index')
+     .as('posts.own')
+     .middleware(['auth'])
+
 Route.get('/posts/:slug', 'PostController.show')
      .as('posts.show')
 
