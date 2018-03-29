@@ -10,7 +10,8 @@
   <ul class="menu-list">
     @each(tag in tags.toJSON())
       <li>
-        <a class="is-info" href="{{ route('posts.tags', { slug: tag.slug }) }}">
+        <a class="is-info{{ request.match(['/tag/' + tag.slug ]) ? ' is-active' : '' }}"
+        href="{{ route('posts.tags', { slug: tag.slug }) }}">
           {{ tag.name }}
         </a>
       </li>
