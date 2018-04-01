@@ -7,10 +7,10 @@ class HomeController {
   async index ({ view, request, response }) {
     let posts = await Post.query()
         .forIndex()
-        .fetch()
-
+        .paginate(request.input('page', 1), 2)
 
     console.log(posts.toJSON())
+
     return view.render('index', {
       posts
     })
