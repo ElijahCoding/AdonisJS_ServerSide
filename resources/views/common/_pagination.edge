@@ -3,10 +3,12 @@
   <a href="#" class="pagination-next">Next page</a>
 
   <ul class="pagination-list">
+    @each(page in paginationArray(pagination.lastPage))
     <li>
       <a href="#" class="pagination-link">
-        1
+        {{ page }}
       </a>
     </li>
+    @endeach
   </ul>
 </nav>
