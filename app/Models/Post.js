@@ -31,6 +31,10 @@ class Post extends Model {
     .orderBy('last_reply_at', 'desc')
   }
 
+  static scopeOwnedByUser(builder, user) {
+    return builder.where('user_id', '=', user.id)
+  }
+
   tag () {
     return this.belongsTo('App/Models/Tag')
   }

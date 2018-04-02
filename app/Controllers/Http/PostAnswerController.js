@@ -8,7 +8,7 @@ class PostAnswerController {
    async destroy ({ request, response, params, auth }) {
     let post = await Post.query()
         .where('slug', '=', params.slug)
-        .where('user_id', '=', auth.user.id)
+        .ownedByUser(auth.user)
         .firstOrFail()
 
     post.answer_id = null
@@ -22,7 +22,7 @@ class PostAnswerController {
 
     let post = await Post.query()
       .where('slug', '=', params.slug)
-      .where('user_id', '=', auth.user.id)
+      .ownedByUser(auth.user)
       .whereHas('replies', (builder) => {
         builder.where('id', '=', answer_id)
       })
