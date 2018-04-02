@@ -4,11 +4,12 @@ const { validateAll } = use('Validator')
 const Post = use('App/Models/Post')
 
 class PostAnswerController {
-  async destroy ({ params, auth, response }) {
+
+   async destroy ({ request, response, params, auth }) {
     let post = await Post.query()
-      .where('slug', '=', params.slug)
-      .ownedByUser(auth.user)
-      .firstOrFail()
+        .where('slug', '=', params.slug)
+        .where('user_id', '=', auth.user.id)
+        .firstOrFail()
 
     post.answer_id = null
     await post.save()

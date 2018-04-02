@@ -23,8 +23,12 @@
 
           @if(post.answer)
             <div class="message is-info">
-              <div class="message-header">
+              <div class="message-header is-flex">
                 <p>Best answer</p>
+
+                @if(auth.user && auth.user.id == post.user_id)
+                  <a href="#" onclick="event.preventDefault(); document.getElementById('destroy').submit();">Remove best answer</a>
+                @endif
               </div>
 
               <div class="message-body">
@@ -44,6 +48,11 @@
                 </article>
               </div>
             </div>
+
+            <form action="{{ route('posts.answer.destroy', { slug: post.slug }) }}?_method=DELETE" method="post" id="destroy">
+
+              {{ csrfField() }}
+            </form>
           @endif
 
 
