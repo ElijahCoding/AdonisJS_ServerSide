@@ -5,6 +5,8 @@ const Route = use('Route')
 
 Route.get('/', 'HomeController.index').as('home')
 
+Route.get('/search', 'SearchController.index').as('search')
+
 Route.post('/posts/:slug/answer', 'PostAnswerController.store')
      .as('posts.answer.store')
      .middleware(['auth'])
