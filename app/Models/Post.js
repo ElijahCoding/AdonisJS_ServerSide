@@ -46,6 +46,10 @@ class Post extends Model {
   lastReply () {
     return this.hasOne('App/Models/Post', 'id', 'parent_id').orderBy('created_at', 'asc')
   }
+
+  answer () {
+    return this.hasOne('App/Models/Post', 'answer_id', 'id').orderBy('created_at',' asc')
+  }
 }
 
 module.exports = Post

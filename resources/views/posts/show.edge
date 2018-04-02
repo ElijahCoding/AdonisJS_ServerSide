@@ -21,6 +21,29 @@
             <small>{{ post.created_at }}</small>
           </div>
 
+          <div class="message is-info">
+            <div class="message-header">
+              <p>Best answer</p>
+            </div>
+
+            <div class="message-body">
+              <article class="media">
+                <div class="media-left">
+                  <p class="image is-48x48">
+                    <img src="{{ post.answer.user.avatar }}" alt="{{ post.answer.user.username }}">
+                  </p>
+                </div>
+                <div class="media-content">
+                  <div class="content">
+                    <strong>{{ post.answer.user.username }}</strong>
+                    <p>{{ post.answer.body }}</p>
+                    <small>{{ post.answer.created_at }}</small>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
           @each(reply in post.replies)
             <article class="media">
               <div class="media-left">
