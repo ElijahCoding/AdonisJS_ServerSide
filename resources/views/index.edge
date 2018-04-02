@@ -13,6 +13,13 @@
             There are no posts
           </p>
       @endif
+
+      @if(posts.data.length)
+      @endif
+    </div>
+
+    <div class="section">
+      @!component('common/_pagination', pagination = posts, request = request)
     </div>
   </div>
 @endsection
