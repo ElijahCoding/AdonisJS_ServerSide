@@ -56,3 +56,7 @@ Route.get('/auth/login', 'Auth/LoginController.index')
 Route.post('/auth/login', 'Auth/LoginController.login')
      .as('auth.login')
      .middleware(['guest'])
+
+Route.post('/auth/logout', 'Auth/LogoutController.logout')
+     .as('auth.logout')
+     .middleware(['auth'])
