@@ -21,28 +21,31 @@
             <small>{{ post.created_at }}</small>
           </div>
 
-          <div class="message is-info">
-            <div class="message-header">
-              <p>Best answer</p>
-            </div>
+          @if(post.answer)
+            <div class="message is-info">
+              <div class="message-header">
+                <p>Best answer</p>
+              </div>
 
-            <div class="message-body">
-              <article class="media">
-                <div class="media-left">
-                  <p class="image is-48x48">
-                    <img src="{{ post.answer.user.avatar }}" alt="{{ post.answer.user.username }}">
-                  </p>
-                </div>
-                <div class="media-content">
-                  <div class="content">
-                    <strong>{{ post.answer.user.username }}</strong>
-                    <p>{{ post.answer.body }}</p>
-                    <small>{{ post.answer.created_at }}</small>
+              <div class="message-body">
+                <article class="media">
+                  <div class="media-left">
+                    <p class="image is-48x48">
+                      <img src="{{ post.answer.user.avatar }}" alt="{{ post.answer.user.username }}">
+                    </p>
                   </div>
-                </div>
-              </article>
+                  <div class="media-content">
+                    <div class="content">
+                      <strong>{{ post.answer.user.username }}</strong>
+                      <p>{{ post.answer.body }}</p>
+                      <small>{{ post.answer.created_at }}</small>
+                    </div>
+                  </div>
+                </article>
+              </div>
             </div>
-          </div>
+          @endif
+
 
           @each(reply in post.replies)
             <article class="media">
@@ -58,14 +61,20 @@
 
                   <small>
                     @if(auth.user && auth.user.id == post.user_id)
-                      <a href="#">Mark as best answer</a>
+                      <a href="#" onclick="event.preventDefault(); document.getElementById('answer-{{ reply.id }}').submit();">Mark as best answer</a>
                     @endif
-
                     {{ reply.created_at }}
                   </small>
                 </div>
               </div>
             </article>
+          @endeach
+
+          @each(reply in post.replies)
+            <form action="{{ route('posts.answer.store', { slug: post.slug }) }}" method="POST" id="answer-{{ reply.id }}">
+              {{ csrfField() }}
+              <input type="hidden" name="answer_id" value="{{ reply.id }}">
+            </form>
           @endeach
         </div>
 
