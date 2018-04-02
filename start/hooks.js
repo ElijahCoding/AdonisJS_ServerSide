@@ -21,6 +21,10 @@ hooks.after.providersBooted(() => {
     })
   })
 
+  View.global('parseInt', (number) => {
+    return parseInt(number)
+  })
+
   const Validator = use('Validator')
   const Database = use('Database')
 
