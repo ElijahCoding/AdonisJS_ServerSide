@@ -55,7 +55,14 @@
                 <div class="content">
                   <strong>{{ reply.user.username }}</strong>
                   <p>{{ reply.body }}</p>
-                  <small>{{ reply.created_at }}</small>
+
+                  <small>
+                    @if(auth.user && auth.user.id == post.user_id)
+                      <a href="#">Mark as best answer</a>
+                    @endif
+
+                    {{ reply.created_at }}
+                  </small>
                 </div>
               </div>
             </article>
