@@ -6,8 +6,8 @@ const Route = use('Route')
 Route.get('/', 'HomeController.index').as('home')
 
 Route.post('/posts/:slug/answer', 'PostAnswerController.store')
-     .as('posts.answer.store')
-     .middleware(['auth'])
+    .as('posts.answer.store')
+    .middleware(['auth'])
 
 Route.post('/posts/:slug/reply', 'PostReplyController.store')
      .as('posts.reply.store')
